@@ -1,0 +1,235 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* Float four columns side by side */
+  .column {
+    float: left;
+    width: 290px;
+    padding: 0 10px;
+  }
+
+  /* Remove extra left and right margins, due to padding in columns */
+  .row {
+    margin: 0 -5px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+
+  /* Responsive columns - one column layout (vertical) on small screens */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+
+  .border-right {
+    border-left: 1px;
+    height: 400px;
+    position: absolute;
+    left: 70%;
+    margin-left: -3px;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+</style>
+
+<div>
+  <h1
+    class="mb-5"
+    style="font-weight: bolder; font-size: 40px; margin-left: 40%"
+  >
+    Categories
+  </h1>
+  <div class="row mt-7">
+    <div class="column">
+      <div class="card">
+        <a class="block-list-item__link">
+          <div class="block-list-item__icon">
+            <img
+              data-lotus-icon="360003417034"
+              src="//theme.zdassets.com/theme_assets/1024340/4a9f357ea0372777b16e79fc71d19c06fc4feb81.svg"
+              class="center"
+            />
+          </div>
+          <div class="block-list-item__details">
+            <h5 class="font-bold text-xl">Getting started</h5>
+            <p class="meta">Learn the basics, connect your calendar</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card">
+        <a class="block-list-item__link">
+          <div class="block-list-item__icon">
+            <img
+              data-lotus-icon="4415572668951"
+              src="//theme.zdassets.com/theme_assets/1024340/455f2c607b0e8adfef191786d74c8b1ba1fcb0ba.svg"
+              class="center"
+              style="width: 55%"
+            />
+          </div>
+          <div class="block-list-item__details">
+            <h5 class="font-bold text-xl">Using Evently</h5>
+            <p class="meta">
+              Availability, Event Type Settings, and Multi-user features
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card">
+        <a class="block-list-item__link">
+          <div class="block-list-item__icon">
+            <img
+              data-lotus-icon="203261727"
+              src="//theme.zdassets.com/theme_assets/1024340/fc29797cd48f0341c6d6410bf3e0dd245ce72140.svg"
+              class="center"
+              style="width: 49%"
+            />
+          </div>
+          <div class="block-list-item__details">
+            <h5 class="font-bold text-xl">Automation</h5>
+            <p class="meta">
+              Includes Calendar Connections, Evently Integrations
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card">
+        <a class="block-list-item__link">
+          <div class="block-list-item__icon">
+            <img
+              data-lotus-icon="4415578731927"
+              src="//theme.zdassets.com/theme_assets/1024340/44873607c0baa10dee90b96ef370412e8f823955.svg"
+              class="center"
+            />
+          </div>
+          <div class="block-list-item__details">
+            <h5 class="font-bold text-xl">Evently for Mobile</h5>
+            <p class="meta">Mobile Apps for iOS &amp; Android available</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--------------------------------------------------------->
+<br /><br /><br />
+<div>
+  <h2
+    style="
+      display: block;
+      font-weight: bolder;
+      margin-left: auto;
+      margin-right: auto;
+      width: auto;
+      font-size: 30px;
+    "
+  >
+    What Is Evently?
+  </h2>
+  <br />
+  <p class="meta">
+    Evently is an app for scheduling appointments, meetings, and events. Its
+    goal is to eliminate the problematic back-and-forth when trying to nail down
+    times. Rather than email chains and phone tag, you can send your
+    availability with a Evently link (even if the people booking time with you
+    don't use Evently). Invitees will see all the available openings in your
+    schedule and can select the one that suits them best. That ensures the ideal
+    time slot for both parties, eliminates time zone confusion, and avoids the
+    strings of conversations about who's available when.
+  </p>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 border-right">
+        <p class="font-bold mb-3">Additional Information</p>
+        <div class="flex items-center space-x-4">
+          <a routerLink="/" class="text-blue-500">
+            <i class="fa fa-home" style="font-size: 20px; color: blue"></i>
+            <span> Website &nbsp; </span>
+          </a>
+        </div>
+        <ul class="mt-0 space-y-1">
+          <li style="font-weight: bold">Version</li>
+          <li>1.6.2.0</li>
+          <li style="font-weight: bold">Updated</li>
+          <li>March 8, 2022</li>
+          <li style="font-weight: bold">Size</li>
+          <li>3.72MB</li>
+          <li style="font-weight: bold">Language</li>
+          <li>English</li>
+          <li style="font-weight: bold">Developer</li>
+          <li>Dami Hundeyin,</li>
+          <li>Ashish Donda,</li>
+          <li>Haily Jhon</li>
+        </ul>
+      </div>
+      <div class="col-md-6" style="width: 50%">
+        <h5 class="font-bold text-xl mt-2">Overview</h5>
+        <p>
+          Schedule meetings without the hassle. Never get double booked. Evently
+          works with your calendar to automate appointment scheduling. Sign up
+          for your free Evently account, then use the Evently for Chrome
+          extension to: - Access all of your event types right from your Chrome
+          browser - Select and share your available times to meet in just a few
+          clicks - Mark and save event types as your favorites for even quicker
+          access - Choose specific time slots to display in emails to quickly
+          set up one-off meetings - Add notes to your event types that only you
+          and your team can see With our Chrome extension, you can also access
+          Evently directly from Gmail to: - Quickly set up one-off meetings -
+          Share the links to your Evently event scheduling pages
+        </p>
+
+        <h5 class="font-bold text-xl mt-2">About Evently</h5>
+
+        <p>
+          Evently connects with your personal and business calendars to save you
+          time and simplify the tasks involved in meeting with people outside
+          your company. Now you can connect and agree with your invitees on the
+          best time to meet and schedule your meetings without the
+          back-and-forth emails.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

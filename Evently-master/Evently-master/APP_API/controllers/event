@@ -1,0 +1,124 @@
+const { type } = require('express/lib/response');
+const mongoose = require('mongoose');
+const Event = mongoose.model('Event');
+const getEvents = (req, res) => {
+  Event.find().exec(function (err, eventData) {
+    if (err) {
+      res.status(404).json(err);
+      return;
+    }
+    res.status(200).json(eventData);
+  });
+};
+const createEvent = (req, res) => {
+  let participantList = [];
+  Event.create(
+    {
+      type: req.body.type,
+      duration: req.body.duration,
+      description: req.body.description,
+      name: req.body.name,
+      start_time: req.body.start_time,
+      end_time: req.body.end_time,
+      duration_unit: req.body.duration_unit,
+      host: {
+        name: req.body.host.name,
+        email: req.body.host.email
+      },
+      participants: req.body.participants,
+      location: {
+        type: req.body.location.type,
+        sub_type: req.body.location.sub_type,
+        details: req.body.location.details
+      }
+    },
+    (err, eventData) => {
+      if (err) {
+        res.status(404).json(err);
+      } else {
+        res.status(201).json(eventData);
+      }
+    }
+  );
+};
+const getSingleEvent = (req, res) => {
+  Event.findById(req.params.eventId).exec((err, eventData) => {
+    if (!eventData) {
+      return res.status(404).json({
+        message: 'event not found'
+      });
+    } else if (err) {
+      return res.status(404).json(err);
+    }
+    res.status(200).json(eventData);
+  });
+};
+const updateEvent = (req, res) => {
+  if (!req.params.eventId) {
+    return res.status(404).json({
+      message: 'Not found, eventId is required'
+    });
+  }
+  Event.findById(req.params.eventId).exec((err, eventData) => {
+    if (!eventData) {
+      return res.json(404).status({
+        message: 'eventId not found'
+      });
+    } else if (err) {
+      return res.status(400).json(err);
+    }
+    Event.findById(req.params.eventId).exec((err, eventData) => {
+      if (!eventData) {
+        return res.json(404).status({
+          message: 'eventId not found'
+        });
+      } else if (err) {
+        return res.status(400).json(err);
+      }
+      eventData.name = req.body.name ? req.body.name : eventData.name;
+      eventData.duration = req.body.duration ? req.body.duration : eventData.duration;
+      eventData.duration_unit = req.body.duration_unit ? req.body.duration_unit : eventData.duration_unit;
+      eventData.host.name = req.body.host.name ? req.body.host.name : eventData.host.name;
+      eventData.host.email = req.body.host.email ? req.body.host.email : eventData.host.email;
+      eventData.participants = req.body.participants ? req.body.participants : eventData.participants;
+      eventData.location.type = req.body.location.type ? req.body.location.type : eventData.location.type;
+      eventData.location.sub_type = req.body.location.sub_type ? req.body.location.sub_type : eventData.location.sub_type;
+      eventData.location.details = req.body.location.details ? req.body.location.details : eventData.location.details;
+      eventData.description = req.body.description ? req.body.description : eventData.description;
+      eventData.start_time = req.body.start_time ? req.body.start_time : eventData.start_time;
+      eventData.end_time = req.body.end_time ? req.body.end_time : eventData.end_time;
+
+      eventData.save((err, event) => {
+        if (err) {
+          res.status(404).json(err);
+        } else {
+          res.status(200).json(event);
+        }
+      });
+    });
+  });
+};
+
+const deleteEvent = (req, res) => {
+  const eventId = req.params.eventId;
+  if (eventId) {
+    Event.findByIdAndRemove(eventId).exec((err, eventData) => {
+      if (err) {
+        return res.status(404).json(err);
+      }
+      res.status(204).json(null);
+    });
+  } else {
+    res.status(404).json({
+      message: 'No eventId'
+    });
+  }
+};
+
+module.exports = {
+  getEvents,
+  createEvent,
+  getSingleEvent,
+  updateEvent,
+  deleteEvent
+};

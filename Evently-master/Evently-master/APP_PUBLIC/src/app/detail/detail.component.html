@@ -1,0 +1,122 @@
+<div class="flex items-center justify-center py-20">
+  <!-- Summary -->
+  <div class="">
+    <div class="rounded-lg border min-w-[23vw] border-gray-400 bg-white p-3">
+      <div class="flex items-center justify-between">
+        <h1 class="text-lg font-bold">{{ event.name }}</h1>
+        <div
+          (click)="copyLink(event._id)"
+          class="flex items-center text-main hover:text-main space-x-2"
+        >
+          <img
+            src="http://cdn.onlinewebfonts.com/svg/img_201365.png"
+            class="w-4 h-4"
+          />
+          <span class="text-sm">Copy Link</span>
+        </div>
+      </div>
+      <div class="flex items-center mt-4 space-x-2">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+          class="w-7 h-7"
+        />
+        <div class="">
+          <a
+            href="mailto:{{ event.host.email }}"
+            class="block hover:underline hover:underline-main hover:text-main text-sm"
+            >{{ event.host.name }}</a
+          >
+          <a
+            href="mailto:{{ event.host.email }}"
+            class="block hover:underline hover:underline-main hover:text-main text-sm"
+            >{{ event.host.email }}</a
+          >
+        </div>
+      </div>
+
+      <div class="mt-4 flex items-center space-x-4">
+        <div class="flex items-center space-x-2">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/109/109613.png"
+            class="w-4 h-4 inline"
+          />
+          <p class="text-sm">{{ event.duration }} {{ event.duration_unit }}</p>
+        </div>
+        <p>&#183;</p>
+        <div class="flex items-center space-x-2">
+          <img
+            src="https://flyclipart.com/thumb2/calendar-png-icon-free-download-592849.png"
+            class="w-4 h-4 inline"
+          />
+          <p class="text-sm">
+            {{ event.start_time | date: "dd/MM/yyyy" }} -
+            {{ event.start_time | date: "dd/MM/yyyy" }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="rounded-lg border min-w-[23vw] border-gray-400 bg-white p-3 mt-10"
+    >
+      <h1 class="text-lg font-bold">Event Details</h1>
+      <div class="mt-4 flex items-start space-x-2">
+        <img
+          src="https://toppng.com/uploads/preview/location-icon-comments-icon-11553530274lv1a2zi5ab.png"
+          class="w-4 h-4 inline mr-2"
+        />
+        <div class="">
+          <p class="text-sm font-bold">
+            {{ event.location.type }}
+            <span class="font-normal">({{ event.location.sub_type }})</span>
+          </p>
+          <p class="text-sm">{{ event.location.details }}</p>
+        </div>
+      </div>
+      <div class="mt-4 flex items-start space-x-2">
+        <img
+          src="https://e7.pngegg.com/pngimages/213/478/png-clipart-computer-icons-scalable-graphics-font-conference-for-management-accounting-research-about-icon-text-computer-program.png"
+          class="w-4 h-4 inline mr-2"
+        />
+        <div class="">
+          <p *ngIf="event.description" class="text-sm">
+            {{ event.description }}
+          </p>
+          <p *ngIf="!event.description" class="text-sm">No event agenda</p>
+        </div>
+      </div>
+      <div class="mt-4">
+        <p>Participants</p>
+        <div class="grid grid-cols-3 gap-4 mt-2">
+          <div *ngFor="let participant of event.participants">
+            <div
+              class="flex items-center space-x-1 rounded-full py-2 px-5 bg-gray-200"
+            >
+              <img
+                src="https://icons.iconarchive.com/icons/custom-icon-design/silky-line-user/512/users-icon.png"
+                class="w-4 h-4 inline mr-2"
+              />
+              <div class="">
+                <p class="text-sm">{{ participant.name }}</p>
+                <p class="text-xs">{{ participant.email }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-5 mt-10">
+      <button
+        (click)="deleteEvent(event._id)"
+        class="text-red-500"
+        routerLink="/events"
+      >
+        Delete
+      </button>
+      <a
+        class="rounded-full bg-main text-white py-2 px-5"
+        routerLink="/edit/{{ event._id }}"
+        >Update</a
+      >
+    </div>
+  </div>
+</div>

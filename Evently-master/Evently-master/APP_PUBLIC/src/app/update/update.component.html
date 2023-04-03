@@ -1,0 +1,241 @@
+<div class="flex items-center justify-center">
+  <div class="">
+    <p class="text-center font-bold text-xl">Add your event details</p>
+    <form (ngSubmit)="updateEvent(event._id, event)" class="mt-4">
+      <div class="rounded border p-3 w-full">
+        <p class="font-bold text-md">{{ event.name }}</p>
+        <div class="mt-3 mb-3">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+            class="w-5 h-5 inline mr-2"
+          />
+          <p class="inline">Add Host</p>
+          <div class="mt-3 mb-3">
+            <label for="host_name" class="text-sm">Host Name</label>
+            <input
+              [(ngModel)]="event.host.name"
+              name="host_name"
+              type="text"
+              id="host_name"
+              placeholder="John Doe"
+              class="text-sm text-gray-600 w-full py-3 px-2 outline-none border rounded mb-3"
+            />
+
+            <label for="host_email" class="text-sm">Host Email</label>
+            <input
+              [(ngModel)]="event.host.email"
+              name="host_email"
+              type="email"
+              id="host_email"
+              placeholder="JohnDoe@email.com"
+              class="text-sm text-gray-600 w-full py-3 px-2 outline-none border rounded"
+            />
+          </div>
+          <hr />
+          <div class="mt-3">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/109/109613.png"
+              class="w-4 h-4 inline mr-2"
+            />
+            <p class="inline">Add meeting duration</p>
+            <div class="mt-3">
+              <label for="duration" class="text-sm">Duration</label>
+              <input
+                [(ngModel)]="event.duration"
+                name="duration"
+                type="number"
+                id="duration"
+                placeholder=""
+                class="text-sm text-gray-600 w-full py-3 px-2 outline-none border rounded mb-3"
+              />
+              <label for="duration_unit" class="text-sm">Duration Unit</label>
+              <select
+                [(ngModel)]="event.duration_unit"
+                name="duration_unit"
+                id="duration_unit"
+                class="text-sm text-gray-600 w-full py-3 px-2 outline-none border rounded"
+              >
+                <option value="seconds">Second(s)</option>
+                <option value="minutes">Minute(s)</option>
+                <option value="hours">Hour(s)</option>
+                <option value="days">Day(s)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-6 rounded border p-3">
+        <p class="font-bold text-md">Event Details</p>
+        <div class="mt-3">
+          <label for="event_name" class="text-sm">Event name</label>
+          <input
+            [(ngModel)]="event.name"
+            name="event_name"
+            type="text"
+            id="event_name"
+            placeholder="Event name..."
+            class="text-sm text-gray-600 w-full py-3 px-2 outline-none border rounded mb-3"
+          />
+          <div class="mt-3">
+            <img
+              src="https://toppng.com/uploads/preview/location-icon-comments-icon-11553530274lv1a2zi5ab.png"
+              class="w-4 h-4 inline mr-2"
+            />
+            <p class="inline">Location details</p>
+            <div class="mt-3">
+              <label for="location_type" class="text-sm">Location Type</label>
+              <select
+                [(ngModel)]="event.location.type"
+                name="location_type"
+                id="location_type"
+                class="text-sm mb-3 text-gray-600 w-full py-3 px-2 outline-none border rounded"
+              >
+                <option value="In Person">In Person</option>
+                <option value="Phone Call">Phone Call</option>
+                <option value="Conference Call">Conference Call</option>
+              </select>
+
+              <label for="location_sub_type" class="text-sm"
+                >Location Sub Type</label
+              >
+              <input
+                [(ngModel)]="event.location.sub_type"
+                name="location_sub_type"
+                type="text"
+                id="location_sub_type"
+                placeholder="Location Sub Type..."
+                class="text-sm text-gray-600 w-full py-3 px-2 outline-none border rounded mb-3"
+              />
+
+              <label for="location_details" class="text-sm"
+                >Location Details</label
+              >
+              <input
+                [(ngModel)]="event.location.details"
+                name="location_details"
+                type="text"
+                id="location_details"
+                placeholder="Location Details..."
+                class="text-sm text-gray-600 w-full py-3 px-2 outline-none border rounded mb-3"
+              />
+            </div>
+            <div class="mt-3">
+              <img
+                src="https://flyclipart.com/thumb2/calendar-png-icon-free-download-592849.png"
+                class="w-4 h-4 inline mr-2"
+              />
+              <p class="inline">Event dates</p>
+              <div class="mt-3">
+                <label for="start_date" class="text-sm">Start Date</label>
+                <input
+                  [(ngModel)]="event.start_time"
+                  name="start_date"
+                  type="date"
+                  id="start_date"
+                  class="text-sm text-gray-600 w-full py-3 px-2 outline-none border rounded mb-3"
+                />
+
+                <label for="end_date" class="text-sm">End Date</label>
+                <input
+                  [(ngModel)]="event.end_time"
+                  name="end_date"
+                  type="date"
+                  id="end_date"
+                  class="text-sm text-gray-600 w-full py-3 px-2 outline-none border rounded mb-3"
+                />
+
+                <label for="event_details">Event details/agenda</label>
+                <textarea
+                  [(ngModel)]="event.description"
+                  name="event_details"
+                  id="event_detials"
+                  rows="4"
+                  placeholder="Add any information relevant to this event"
+                  class="text-sm text-gray-600 w-full py-3 px-2 outline-none border rounded mb-3"
+                ></textarea>
+              </div>
+              <div class="mt-3">
+                <img
+                  src="https://icons.iconarchive.com/icons/custom-icon-design/silky-line-user/512/users-icon.png"
+                  class="w-4 h-4 inline mr-2"
+                />
+                <p class="inline">Add Participants</p>
+                <div class="flex items-center space-x-4">
+                  <div *ngFor="let participant of event.participants">
+                    <div
+                      class="flex items-center space-x-3 rounded-full p-2 bg-gray-200"
+                    >
+                      <img
+                        src="https://icons.iconarchive.com/icons/custom-icon-design/silky-line-user/512/users-icon.png"
+                        class="w-4 h-4 inline mr-2"
+                      />
+                      <div class="">
+                        <p class="text-sm">{{ participant.name }}</p>
+                        <p class="text-xs">{{ participant.email }}</p>
+                      </div>
+                      <img
+                        (click)="removeParticipant(participant.name)"
+                        src="https://www.freeiconspng.com/thumbs/close-icon/black px-5 py-3-close-icon-3.png"
+                        class="w-4 h-4 inline mr-2 cursor-pointer"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="flex mt-3 items-center justify-between space-x-4">
+                  <div class="w-full">
+                    <label for="participant_name" class="text-sm"
+                      >Participant Name</label
+                    >
+                    <input
+                      [(ngModel)]="participantMember.name"
+                      name="participant_name"
+                      type="text"
+                      id="start_date"
+                      class="text-sm text-gray-600 w-full py-3 px-2 outline-none border rounded"
+                    />
+                  </div>
+                  <div class="w-full">
+                    <label for="participant_email" class="text-sm"
+                      >Participant Email</label
+                    >
+                    <input
+                      [(ngModel)]="participantMember.email"
+                      name="participant_email"
+                      type="email"
+                      required="required"
+                      id="participant_email"
+                      class="text-sm text-gray-600 w-full py-3 px-2 outline-none border rounded"
+                    />
+                  </div>
+                  <div>
+                    <button
+                      type="button"
+                      (click)="addParticipant(participantMember)"
+                      class="rounded-full px-5 py-2 bg-gray-600 text-white text-sm"
+                    >
+                      Add
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4 mt-4">
+          <button
+            type="button"
+            class="rounded border bg-white text-black px-5 py-3"
+          >
+            <a routerLink="/events">Cancel</a>
+          </button>
+          <button
+            type="submit"
+            class="rounded border bg-main text-white px-5 py-3"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

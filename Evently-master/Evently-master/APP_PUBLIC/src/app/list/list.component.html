@@ -1,0 +1,69 @@
+<div class="">
+  <form (keyup.enter)="filterEvents(search)" (ngSubmit)="filterEvents(search)">
+    <div class="flex items-center space-x-0">
+      <img
+        src="http://cdn.onlinewebfonts.com/svg/img_487196.png"
+        class="w-4 h-4"
+      />
+      <input
+        [(ngModel)]="search"
+        name="search"
+        type="text"
+        id="search"
+        placeholder="Search..."
+        class="text-sm text-gray-600 w-full py-3 px-2 outline-none"
+      />
+    </div>
+  </form>
+  <div class="mt-5">
+    <div class="grid grid-cols-4 gap-5">
+      <div *ngFor="let event of filteredEvents">
+        <div class="border cursor-pointer rounded h-full shadow-lg">
+          <div class="p-3">
+            <p class="font-bold text-lg">{{ event.name }}</p>
+            <span class="text-sm text-gray-500 mt-1 block"
+              >{{ event.duration }} {{ event.duration_unit }} Meeting</span
+            >
+            <span class="text-sm text-gray-500 mt-1 block">{{
+              event.location.type
+            }}</span>
+            <div class="flex items-center justify-between mt-4">
+              <div class="flex items-center space-x-2">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+                  class="w-5 h-5"
+                />
+                <a
+                  href="mailto:{{ event.host.email }}"
+                  class="hover:underline hover:underline-main hover:text-main text-sm"
+                  >{{ event.host.name }}</a
+                >
+              </div>
+              <span class="text-xs"
+                >{{ event.participants.length }} Participants</span
+              >
+            </div>
+          </div>
+          <hr />
+          <div class="p-3 flex items-center justify-between">
+            <div
+              (click)="copyLink(event._id)"
+              class="flex items-center hover:text-main space-x-2"
+            >
+              <img
+                src="http://cdn.onlinewebfonts.com/svg/img_201365.png"
+                class="w-4 h-4"
+              />
+              <span class="text-sm">Copy Link</span>
+            </div>
+            <button
+              class="text-main hover:text-white hover:bg-main transition-shadow bg-white rounded-full py-1 px-5 border border-main"
+            >
+              <a routerLink="/event/{{ event._id }}">View</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
